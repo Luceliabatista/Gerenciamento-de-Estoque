@@ -1,13 +1,17 @@
-require('dotenv/config') //Definindo variavel de ambiente
+require('dotenv/config')
 require('./db')
+const Estoque = require('./models/Estoque')
+const estoqueRoutes = require('./routes/estoquesRoutes')
+
+
 
 const express = require('express')
 const app = express();
 
-// app.use(express.urlencoded({ extended: true })); //Url fica dentro do código
-app.use(express.json()); //Aplicação consegue ler json
 
-// const routes = require('./routes')
-// app.use(routes)
+app.use(express.json()); 
+app.use(express.urlencoded({extended: true}))
+app.use('/estoque', estoqueRoutes )
 
-app.listen(3000);
+
+app.listen(3000)
