@@ -23,7 +23,8 @@ module.exports = class EstoqueController {
     res.status(201).json({message:`estoque- ${estoque.name} -criado`})
 }
     static async showEstoque(req, res){
-        const estoque = await Estoque.findAll({raw:true})
+        const estoque = await Estoque.find({raw:true})
+
 
         if(!estoque){
             res.status(402).json({message:'lista-estoque-parametro-nulo'})
@@ -56,7 +57,7 @@ module.exports = class EstoqueController {
                 status:req.body.status
             }
             console.log(estoque)
-            await Estoque.update(estoque, {where:{id:id}})
+            await Estoque.updateMany(estoque, {where:{id:id}})
 
             if(!estoque){
                 res.status(402).json({message:'estoque-parametros-null'})
