@@ -5,6 +5,7 @@
 <br/>
 
 ## Desafio:
+
 <br/>
 <div align="center">
 Construir REST API em MongoDB que permite manipular as quantidades de mercadoria para estoque.
@@ -12,7 +13,8 @@ Construir REST API em MongoDB que permite manipular as quantidades de mercadoria
 
 <br/>
 
-- ### Requisitos da aplicação:
+## Requisitos da aplicação:
+
 - ### Realizar CRUD de mercadoria com sua categoria.
 - ### Gerar relatórios em JSON mostrando quais mercadorias estão em: baixa quantidade e em falta
 
