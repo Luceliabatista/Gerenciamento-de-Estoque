@@ -8,7 +8,7 @@
 
 <br/>
 <div align="center">
-Construir REST API em MongoDB que permite manipular as quantidades de mercadoria para estoque.
+Construir REST API em MongoDB que permita manipular as quantidades de mercadorias para estoque.
 </div>
 
 <br/>
