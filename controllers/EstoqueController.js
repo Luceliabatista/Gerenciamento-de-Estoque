@@ -26,7 +26,6 @@ module.exports = class EstoqueController {
     static async showEstoque(req, res) {
         const estoque = await Estoque.find({ raw: true })
 
-
         if (!estoque) {
             res.status(402).json({ message: 'lista-estoque-parametro-nulo' })
             return
@@ -56,7 +55,6 @@ module.exports = class EstoqueController {
             category: req.body.category,
             status: req.body.status
         }
-        console.log(estoque)
         await Estoque.updateOne({ _id: id }, estoque)
         if (!estoque) {
             res.status(402).json({ message: 'estoque-parametros-null' })
@@ -89,7 +87,6 @@ module.exports = class EstoqueController {
          
         //Não tem produto com quantidade igual a zero
         if (estoques.length == 0) {
-            console.log("não tem")
             res.status(417).json({ message: `estoque-sem-produto-zerado` })
             return
         }  
@@ -111,3 +108,4 @@ module.exports = class EstoqueController {
         res.status(406).json(estoques)
     }
 }
+
