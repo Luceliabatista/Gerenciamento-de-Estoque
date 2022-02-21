@@ -1,7 +1,7 @@
 const Estoque = require('../models/Estoque')
 
 module.exports = class EstoqueController {
-
+    // CRUD
     static async createEstoque(req, res) {
         const estoque = {
             name: req.body.name,
@@ -22,6 +22,7 @@ module.exports = class EstoqueController {
 
         res.status(201).json({ message: `estoque- ${estoque.name} -criado` })
     }
+
     static async showEstoque(req, res) {
         const estoque = await Estoque.find({ raw: true })
 
@@ -74,9 +75,9 @@ module.exports = class EstoqueController {
             return
         }
 
-        await Estoque.deleteOne({ _id: id } )
+        await Estoque.deleteOne({ _id: id })
 
-        res.status(202).json({ message: `estoque-${id}-removido` })
+        res.status(200).json({ message: `estoque-${id}-removido` })
 
     }
 
@@ -86,11 +87,11 @@ module.exports = class EstoqueController {
 
         let estoques = await Estoque.find({ quantity: vazio })
 
-        res.status(406).json(estoques)
-    }      
+        res.status(200).json(estoques)
+    }
 
-     //Relatório de Estoque em baixa
-     static async geraRelatorioBaixo(req, res) {
+    //Relatório de Estoque em baixa
+    static async geraRelatorioBaixo(req, res) {
         const estqBaixo = 10
         const vazio = 0
 
