@@ -90,7 +90,7 @@ module.exports = class EstoqueController {
         //Não tem produto com quantidade igual a zero
         if (estoques.length == 0) {
             console.log("não tem")
-            res.status(204).json()
+            res.status(417).json({ message: `estoque-sem-produto-zerado` })
             return
         }  
         //Tem produto com quantidade igual a zero
