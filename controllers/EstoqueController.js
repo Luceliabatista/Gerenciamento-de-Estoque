@@ -104,6 +104,10 @@ module.exports = class EstoqueController {
 
         let estoques = await Estoque.find({ quantity: { $lte: estqBaixo, $gt: vazio } })
 
+        if (estoques.length == 0) {
+            res.status(417).json({ message: `estoque-alto` })
+            return
+        }
         res.status(406).json(estoques)
     }
 }
