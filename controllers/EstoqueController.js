@@ -88,4 +88,14 @@ module.exports = class EstoqueController {
 
         res.status(406).json(estoques)
     }      
+
+     //Relatório de Estoque em baixa
+     static async geraRelatorioBaixo(req, res) {
+        const estqBaixo = 10
+        const vazio = 0
+
+        let estoques = await Estoque.find({ quantity: { $lte: estqBaixo, $gt: vazio } })
+
+        res.status(406).json(estoques)
+    }
 }

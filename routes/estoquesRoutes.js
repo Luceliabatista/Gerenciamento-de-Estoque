@@ -9,6 +9,7 @@ router.get('/edit/:id', EstoqueController.listUpdateEstoque)
 router.post('/edit', EstoqueController.sendUpdateEstoque)
 router.post('/remove', EstoqueController.removeEstoque)
 router.get('/vazio', EstoqueController.geraRelatorioVazio)
+router.get('/baixo', EstoqueController.geraRelatorioBaixo)
 
 
 module.exports =router
