@@ -2,15 +2,13 @@ const Estoque = require('../models/Estoque')
 
 module.exports = class EstoqueController {
     // CRUD
-    static async createEstoque(req, res) {
+    static async createEstoque(req, res) { 
         const estoque = {
             name: req.body.name,
             price: req.body.price,
-            eid: (req.body.name.slice(0, 2) + req.body.category.slice(0, 3)).toUpperCase(),
             description: req.body.description,
             quantity: req.body.quantity,
             category: req.body.category,
-            status: true
         }
 
         await Estoque.create(estoque)
@@ -49,11 +47,9 @@ module.exports = class EstoqueController {
         const estoque = {
             name: req.body.name,
             price: req.body.price,
-            eid: (req.body.name.slice(0, 2) + req.body.category.slice(0, 3)).toUpperCase(),
             description: req.body.description,
             quantity: req.body.quantity,
             category: req.body.category,
-            status: req.body.status
         }
         await Estoque.updateOne({ _id: id }, estoque)
         if (!estoque) {
@@ -79,7 +75,7 @@ module.exports = class EstoqueController {
 
     }
 
-    //Relatório de Estoque Vazio
+    //Relatório de Estoque Vazio/
     static async geraRelatorioVazio(req, res) {
         
         const vazio = 0
