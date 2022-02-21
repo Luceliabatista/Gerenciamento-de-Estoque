@@ -80,4 +80,23 @@ module.exports = class EstoqueController {
 
     }
 
+    //Relatório de Estoque em falta/baixa
+    static async geraRelatorio (req, res) {
+        const quantity = req.body.quantity
+        const relatorio = {
+            name: req.body.name,
+            quantity: req.body.quantity,
+        }
+
+        // await Estoque.find({ raw: true })
+        await Estoque.find({ quantity: quantity })
+        console.log(quantity)
+
+        if (quantity == 0) {
+            res.status(406).json({ message: 'estoque-vazio' })
+            res.status(406).json(relatorio)
+            return
+        }
+        
+    }      
 }
