@@ -31,7 +31,7 @@ module.exports = class EstoqueController {
         res.status(202).json(estoque)
     }
 
-    static async listUpdateEstoque(req, res) {
+    static async filterEstoque(req, res) {
         const id = req.params.id
 
         const estoque = await Estoque.findOne({ _id: id })
