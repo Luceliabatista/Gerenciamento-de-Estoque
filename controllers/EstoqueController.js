@@ -31,7 +31,7 @@ module.exports = class EstoqueController {
         res.status(202).json(estoque)
     }
 
-    static async filterEstoque(req, res) {
+    static async filterEstoque(req, res) {  
         const id = req.params.id
 
         const estoque = await Estoque.findOne({ _id: id })
@@ -78,8 +78,8 @@ module.exports = class EstoqueController {
     //Relatório de Estoque Vazio
     static async geraRelatorioVazio(req, res) {
         
-        const vazio = 0
-        let estoques = await Estoque.find({ quantity: vazio })
+        const semEstoque = 0
+        let estoques = await Estoque.find({ quantity: semEstoque })
          
         if (estoques.length == 0) {
             res.status(417).json({ message: `estoques-abastecidos` })
@@ -91,9 +91,9 @@ module.exports = class EstoqueController {
     //Relatório de Estoque Baixo
     static async geraRelatorioBaixo(req, res) {
         const estoqueBaixo = 10
-        const vazio = 0
+        const semEstoque = 0
 
-        let estoques = await Estoque.find({ quantity: { $lte: estoqueBaixo, $gt: vazio } })
+        let estoques = await Estoque.find({ quantity: { $lte: estoqueBaixo, $gt: semEstoque } })
 
         if (estoques.length == 0) {
             res.status(417).json({ message: `estoques-abastecidos` })
