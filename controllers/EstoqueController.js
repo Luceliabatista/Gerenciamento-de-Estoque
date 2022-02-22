@@ -75,7 +75,7 @@ module.exports = class EstoqueController {
 
     }
 
-    //Relatório de Estoque Vazio/
+    //Relatório de Estoque Vazio
     static async geraRelatorioVazio(req, res) {
         
         const vazio = 0
@@ -83,7 +83,7 @@ module.exports = class EstoqueController {
          
         //Não tem produto com quantidade igual a zero
         if (estoques.length == 0) {
-            res.status(417).json({ message: `estoque-sem-produto-zerado` })
+            res.status(417).json({ message: `estoques-abastecidos` })
             return
         }  
         //Tem produto com quantidade igual a zero
@@ -92,16 +92,16 @@ module.exports = class EstoqueController {
 
     //Relatório de Estoque em baixa
     static async geraRelatorioBaixo(req, res) {
-        const estqBaixo = 10
+        const estoqueBaixo = 10
         const vazio = 0
 
         let estoques = await Estoque.find({ quantity: { $lte: estqBaixo, $gt: vazio } })
 
         if (estoques.length == 0) {
-            res.status(417).json({ message: `estoque-alto` })
+            res.status(417).json({ message: `estoques-abastecidos` })
             return
         }
-        res.status(406).json(estoques)
+        res.status(200).json(estoques)
     }
 }
 
