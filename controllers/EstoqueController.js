@@ -31,10 +31,10 @@ module.exports = class EstoqueController {
         res.status(202).json(estoque)
     }
 
-    static async filterEstoque(req, res) {  
-        const id = req.params.id
+    static async filterEstoque(req, res) {
+        const category = req.params.category
 
-        const estoque = await Estoque.findOne({ _id: id })
+        const estoque = await Estoque.findOne({ category: category })
         if (!estoque) {
             res.status(406).json({ message: 'parametro-estoque-inconsistente' })
             return
