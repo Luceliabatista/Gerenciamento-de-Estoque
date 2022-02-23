@@ -2,7 +2,7 @@ const Estoque = require('../models/Estoque')
 
 module.exports = class EstoqueController {
     // CRUD
-    static async createEstoque(req, res) { 
+    static async createEstoque(req, res) {
         const estoque = {
             name: req.body.name,
             price: req.body.price,
@@ -34,7 +34,8 @@ module.exports = class EstoqueController {
     static async filterEstoque(req, res) {
         const category = req.params.category
 
-        const estoque = await Estoque.find({ category: category })
+        const estoque = await Estoque.find({ category: { $regex: category, $options: "i" } })
+        
         if (!estoque) {
             res.status(406).json({ message: 'parametro-estoque-inconsistente' })
             return
@@ -77,15 +78,15 @@ module.exports = class EstoqueController {
 
     //Relatório de Estoque Vazio
     static async geraRelatorioVazio(req, res) {
-        
+
         const semEstoque = 0
         let estoques = await Estoque.find({ quantity: semEstoque })
-         
+
         if (estoques.length == 0) {
             res.status(417).json({ message: `estoques-abastecidos` })
             return
-        }  
-        res.status(200).json(estoques)           
+        }
+        res.status(200).json(estoques)
     }
 
     //Relatório de Estoque Baixo
