@@ -5,7 +5,7 @@ const EstoqueController = require('../controllers/EstoqueController')
 
 router.post('/add', EstoqueController.createEstoque)
 router.get('/', EstoqueController.showEstoque)
-router.get('/edit/:category', EstoqueController.filterEstoque)
+router.get('/:category', EstoqueController.filterEstoque)
 router.post('/edit', EstoqueController.sendUpdateEstoque)
 router.post('/remove', EstoqueController.removeEstoque)
 router.get('/vazio', EstoqueController.geraRelatorioVazio)
